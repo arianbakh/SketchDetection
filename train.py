@@ -26,6 +26,7 @@ def calculate_accuracy(model, data_loader):
             total += labels.size(0)
     accuracy = 100 * correct / total
     model.train()
+    return accuracy
 
 
 def train(config, checkpoint_path):
