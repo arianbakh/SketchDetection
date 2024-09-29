@@ -23,6 +23,7 @@ if __name__ == '__main__':
     def run_inference(inputs):
         image = inputs["composite"]
         model_input = np.swapaxes(image, 0, -1)
+        model_input = 255 - model_input
         model_input = np.expand_dims(model_input, axis=0)
         model_input = model_input.astype(np.float32)
         model_input = torch.from_numpy(model_input)
