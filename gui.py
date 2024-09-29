@@ -35,7 +35,13 @@ if __name__ == '__main__':
     demo = gr.Interface(
         fn=run_inference,
         inputs=[
-            gr.Sketchpad(crop_size=SKETCHY_INPUT_SHAPE, type="numpy", image_mode="RGB")
+            gr.Sketchpad(
+                crop_size=SKETCHY_INPUT_SHAPE,
+                type="numpy",
+                image_mode="RGB",
+                height=600,
+                brush=gr.Brush(colors=["#ffffff"], color_mode="fixed")
+            )
         ],
         outputs=["text"]
     )

@@ -6,3 +6,5 @@ checkpoints/*
 !checkpoints/PLACEHOLDER
 configs/*
 !configs/sample-config.json
+notebooks/*
+!notebooks/PLACEHOLDER
