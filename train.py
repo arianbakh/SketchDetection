@@ -1,5 +1,6 @@
 import argparse
 import json
+from sketchdetection.datasets import SketchyDataset
 from types import SimpleNamespace
 
 
