@@ -12,7 +12,7 @@
 3. (Optional) cleanup:
     - `rm data/rendered_256x256.7z`
     - `rm -rf data/256x256/photo`
-4. `python train.py --config configs/sample-config.json`
+4. `python train.py --config configs/sample-config.json --checkpoint checkpoints/resnet152-1e-3.pth`
 
 # Usage
 
