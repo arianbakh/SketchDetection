@@ -4,6 +4,7 @@
 2. `conda activate sketchdetection`
 3. `poetry install`
 4. `apt install p7zip-full`
+5. If poetry stalls at any point, try `poetry config keyring.enabled false`
 
 # Training
 
@@ -16,4 +17,4 @@
 
 # Usage
 
-- `python ui.py`
+- `python gui.py --port 60001 --checkpoint checkpoints/resnet152-1e-3.pth`

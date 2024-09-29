@@ -14,6 +14,13 @@ VAL_RATIO = 0.1
 TEST_RATIO = 0.1
 RANDOM_SEED = 42
 SKETCHY_CLASSES = 125
+SKETCHY_INPUT_SHAPE = (256, 256)
+
+
+def get_class_index_to_name_map():
+    with open(SKETCHY_METADATA_PATH, "r") as metadata_file:
+        metadata = json.loads(metadata_file.read())
+    return metadata["class_index_to_name"]
 
 
 class SketchyDataset(Dataset):
