@@ -1,0 +1,8 @@
+__pycache__/
+sketchdetection/__pycache__/
+data/*
+!data/PLACEHOLDER
+checkpoints/*
+!checkpoints/PLACEHOLDER
+configs/*
+!configs/sample-config.json

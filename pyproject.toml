@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "sketchdetection"
+version = "1.0.0"
+description = "Sketch detection using deep learning"
+authors = ["Arian Bakh <arian@noklabs.ai>"]
+license = "CC BY-NC-SA 4.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
