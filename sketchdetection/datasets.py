@@ -1,5 +1,6 @@
 import cv2
 import json
+import numpy as np
 import os
 import random
 from torch.utils.data import Dataset
@@ -12,6 +13,7 @@ SKETCHY_METADATA_PATH = os.path.join(SKETCHY_DIR, METADATA_FILE_NAME)
 VAL_RATIO = 0.1
 TEST_RATIO = 0.1
 RANDOM_SEED = 42
+SKETCHY_CLASSES = 125
 
 
 class SketchyDataset(Dataset):
@@ -43,8 +45,9 @@ class SketchyDataset(Dataset):
         else:
             image_path = image_paths[0]
         image = cv2.imread(image_path)
-        # TODO channel first
-        return image, label
+        model_input = np.swapaxes(image, 0, -1)
+        model_input = model_input.astype(np.float32)
+        return model_input, label
 
     def _ensure_metadata(self):
         if not os.path.exists(SKETCHY_METADATA_PATH):

@@ -1,9 +1,11 @@
 {
-    "model": "EfficientNetV2-L",
+    "model_architecture": "ResNet152",
     "dataset": "Sketchy",
-    "batch_size": 32,
+    "batch_size": 100,
+    "num_workers": 4,
     "optimizer": "AdamW",
-    "learning_rate": 0.001,
+    "learning_rate": 0.00001,
     "learning_rate_decay": 0.99,
-    "weight_decay": 0.0001
+    "weight_decay": 0.0001,
+    "epochs": 100
 }
