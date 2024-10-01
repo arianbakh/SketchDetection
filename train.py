@@ -38,7 +38,7 @@ def train(config, checkpoint_path):
             num_workers=config.num_workers
         ) for split in ["train", "val", "test"]
     ]
-    model = get_model()
+    model = get_model(config.model_architecture)
     model.cuda()
     optimizer = torch.optim.AdamW(model.parameters(), lr=config.learning_rate, weight_decay=config.weight_decay)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=config.learning_rate_decay)
