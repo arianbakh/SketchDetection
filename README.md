@@ -17,4 +17,4 @@
 
 # Usage
 
-- `python gui.py --port 60001 --checkpoint checkpoints/resnet152-1e-3.pth`
+- `python gui.py --port 60001 --architecture ResNet152 --checkpoint checkpoints/resnet152-1e-3.pth`

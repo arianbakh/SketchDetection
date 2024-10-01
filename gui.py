@@ -6,8 +6,8 @@ from sketchdetection.models import get_model
 import torch
 
 
-def get_pretrained_inference_model(checkpoint_path):
-    model = get_model()
+def get_pretrained_inference_model(checkpoint_path, model_architecture):
+    model = get_model(model_architecture)
     model.load_state_dict(torch.load(checkpoint_path, map_location="cpu", weights_only=True))
     model.eval()
     return model
@@ -17,8 +17,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--port', type=str, help='Port of the service', required=True)
     parser.add_argument('--checkpoint', type=str, help='Path of the checkpoint', required=True)
+    parser.add_argument('--architecture', type=str, help='Model architecture', required=True)
     args = parser.parse_args()
-    inference_model = get_pretrained_inference_model(args.checkpoint)
+    inference_model = get_pretrained_inference_model(args.checkpoint, args.architecture)
     class_index_to_name = get_class_index_to_name_map()
     def run_inference(inputs):
         image = inputs["composite"]
