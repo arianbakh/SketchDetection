@@ -3,6 +3,7 @@ import gradio as gr
 import numpy as np
 from sketchdetection.datasets import SKETCHY_INPUT_SHAPE, get_class_index_to_name_map
 from sketchdetection.models import get_model
+from time import time
 import torch
 
 
@@ -28,8 +29,10 @@ if __name__ == '__main__':
         model_input = np.expand_dims(model_input, axis=0)
         model_input = model_input.astype(np.float32)
         model_input = torch.from_numpy(model_input)
+        start_time = time()
         with torch.no_grad():
             predictions = inference_model(model_input)
+        print(f"Took {time() - start_time:.2f}s")
         predictions = torch.max(predictions, dim=1)[1]
         prediction = str(torch.squeeze(predictions).item())
         class_name = class_index_to_name[prediction]
