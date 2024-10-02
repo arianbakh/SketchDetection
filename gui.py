@@ -1,6 +1,7 @@
 import argparse
 import gradio as gr
 import numpy as np
+from sketchdetection import ViTB16_SHAPE
 from sketchdetection.datasets import SKETCHY_INPUT_SHAPE, get_class_index_to_name_map
 from sketchdetection.models import get_model
 from time import time
@@ -41,7 +42,7 @@ if __name__ == '__main__':
         fn=run_inference,
         inputs=[
             gr.Sketchpad(
-                crop_size=SKETCHY_INPUT_SHAPE,
+                crop_size=ViTB16_SHAPE if args.architecture == "ViTB16" else SKETCHY_INPUT_SHAPE,
                 type="numpy",
                 image_mode="RGB",
                 height=600,

@@ -32,7 +32,7 @@ def calculate_accuracy(model, data_loader):
 def train(config, checkpoint_path):
     train_loader, val_loader, test_loader = [
         DataLoader(
-            SketchyDataset(split),
+            SketchyDataset(split, config),
             batch_size=config.batch_size,
             shuffle=True if split == "train" else False,
             num_workers=config.num_workers

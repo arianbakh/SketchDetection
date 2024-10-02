@@ -3,6 +3,7 @@ import json
 import numpy as np
 import os
 import random
+from sketchdetection import ViTB16_SHAPE
 from torch.utils.data import Dataset
 
 
@@ -24,8 +25,9 @@ def get_class_index_to_name_map():
 
 
 class SketchyDataset(Dataset):
-    def __init__(self, split):
+    def __init__(self, split, config):
         self.split = split
+        self.config = config
         self._ensure_metadata()
         with open(SKETCHY_METADATA_PATH, "r") as metadata_file:
             metadata = json.loads(metadata_file.read())
@@ -52,6 +54,8 @@ class SketchyDataset(Dataset):
         else:
             image_path = image_paths[0]
         image = cv2.imread(image_path)
+        if self.config.model_architecture == "ViTB16":
+            image = cv2.resize(image, ViTB16_SHAPE)
         model_input = np.swapaxes(image, 0, -1)
         model_input = model_input.astype(np.float32)
         return model_input, label
