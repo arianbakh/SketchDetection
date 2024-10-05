@@ -15,6 +15,9 @@ def get_model(architecture: str):
         case "ViTB16":
             model = torchvision.models.vit_b_16(weights=torchvision.models.ViT_B_16_Weights.IMAGENET1K_SWAG_E2E_V1)
             model.heads.head = torch.nn.Linear(768, SKETCHY_CLASSES)
+        case "RegNetY128GF":
+            model = torchvision.models.regnet_y_128gf(weights=torchvision.models.RegNet_Y_128GF_Weights.IMAGENET1K_SWAG_E2E_V1)
+            model.fc = torch.nn.Linear(7392, SKETCHY_CLASSES)
         case _:
             raise ValueError(f"Unknown architecture {architecture}")
     return model
